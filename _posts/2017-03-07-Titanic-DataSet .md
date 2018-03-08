@@ -2,9 +2,9 @@
 title: "Titanic Dataset"
 layout: post
 date: 2018-03-07
-tag: #jekyll
-image: #https://koppl.in/indigo/assets/images/jekyll-logo-light-solid.png
-headerImage: true
+tag: posting
+#image: #https://koppl.in/indigo/assets/images/jekyll-logo-light-solid.png
+#headerImage: true
 projects: true
 hidden: true # don't count this post in blog pagination
 description: "Machine Learning Titanic Dataset"
