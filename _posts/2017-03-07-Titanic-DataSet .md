@@ -1,3 +1,18 @@
+---
+title: "Titanic Dataset"
+layout: post
+date: 2018-03-07
+tag: #jekyll
+image: #https://koppl.in/indigo/assets/images/jekyll-logo-light-solid.png
+headerImage: true
+projects: true
+hidden: true # don't count this post in blog pagination
+description: "Machine Learning Titanic Dataset"
+category: project
+author: nolanwerner
+externalLink: false
+---
+
 
 # Kaggle Titanic Data Competition
 
@@ -13,7 +28,7 @@
 7. Fit your algorithm
 8. Predict
 9. Measure Accuracy and F1Score
-10. Make Predictions on Kaggle 
+10. Make Predictions on Kaggle
 11. Submit Results
 
 
@@ -30,7 +45,7 @@ from sklearn.metrics import accuracy_score, f1_score, recall_score, precision_sc
 
     C:\Users\nwerner\AppData\Local\Continuum\Anaconda2\lib\site-packages\sklearn\cross_validation.py:41: DeprecationWarning: This module was deprecated in version 0.18 in favor of the model_selection module into which all the refactored classes and functions are moved. Also note that the interface of the new CV iterators are different from that of this module. This module will be removed in 0.20.
       "This module will be removed in 0.20.", DeprecationWarning)
-    
+
 
 ### Load Data
 
@@ -64,7 +79,7 @@ df.head()
     Ticket         1309 non-null object
     dtypes: float64(3), int64(4), object(5)
     memory usage: 132.9+ KB
-    
+
 
 
 
@@ -253,7 +268,7 @@ df.info()
     Title          1309 non-null object
     dtypes: float64(3), int64(6), object(6)
     memory usage: 163.6+ KB
-    
+
 
 ### Fill Nulls
 
@@ -301,7 +316,7 @@ groupTrain
 
 ```python
 def fillAge(row, group):
-    
+
     if (row['Sex'] == 'female') & (row['Pclass'] == 1):
         if row['Title'] == 'Miss':
             return group.loc['female', 1, 'Miss']
@@ -311,19 +326,19 @@ def fillAge(row, group):
             return group.loc['female', 1, 'Officer']
         elif row['Title'] == 'Royalty':
             return group.loc['female', 1, 'Royalty']
-    
+
     elif (row['Sex'] == 'female') & (row['Pclass'] == 2):
         if row['Title'] == 'Miss':
             return group.loc['female', 2, 'Miss']
         elif row['Title'] == 'Mrs':
             return group.loc['female', 2, 'Mrs']
-    
+
     elif (row['Sex'] == 'female') & (row['Pclass'] == 3):
         if row['Title'] == 'Miss':
             return group.loc['female', 3, 'Miss']
         elif row['Title'] == 'Mrs':
             return group.loc['female', 3, 'Mrs']
-    
+
     elif row['Sex']=='male' and row['Pclass'] == 1:
         if row['Title'] == 'Master':
             return group.loc['male', 1, 'Master']
@@ -333,7 +348,7 @@ def fillAge(row, group):
             return group.loc['male', 1, 'Officer']
         elif row['Title'] == 'Royalty':
             return group.loc['male', 1, 'Royalty']
-        
+
     elif row['Sex']=='male' and row['Pclass'] == 2:
         if row['Title'] == 'Master':
             return group.loc['male', 2, 'Master']
@@ -341,25 +356,25 @@ def fillAge(row, group):
             return group.loc['male', 2, 'Mr']
         elif row['Title'] == 'Officer':
             return group.loc['male', 2, 'Officer']
-        
+
     elif row['Sex']=='male' and row['Pclass'] == 3:
         if row['Title'] == 'Master':
             return group.loc['male', 3, 'Master']
         elif row['Title'] == 'Mr':
             return group.loc['male', 3, 'Mr']
-        
-        
-df.iloc[:891].Age = df.iloc[:891].apply(lambda x : fillAge(x, groupTrain) if np.isnan(x['Age']) else x['Age'], axis=1) 
+
+
+df.iloc[:891].Age = df.iloc[:891].apply(lambda x : fillAge(x, groupTrain) if np.isnan(x['Age']) else x['Age'], axis=1)
 df.iloc[891:].Age = df.iloc[891:].apply(lambda x : fillAge(x, groupTest) if np.isnan(x['Age']) else x['Age'], axis=1)        
 ```
 
-    C:\Users\nwerner\AppData\Local\Continuum\Anaconda2\lib\site-packages\pandas\core\generic.py:2999: SettingWithCopyWarning: 
+    C:\Users\nwerner\AppData\Local\Continuum\Anaconda2\lib\site-packages\pandas\core\generic.py:2999: SettingWithCopyWarning:
     A value is trying to be set on a copy of a slice from a DataFrame.
     Try using .loc[row_indexer,col_indexer] = value instead
-    
+
     See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stable/indexing.html#indexing-view-versus-copy
       self[name] = value
-    
+
 
 
 ```python
@@ -394,22 +409,22 @@ df.info()
     IsChild        1309 non-null float64
     dtypes: float64(4), int64(6), object(6)
     memory usage: 173.9+ KB
-    
+
 
 ### Visual Data Exploration
 
 
 ```python
 def plotStackedBars(xbars, ybars, df):
-    
+
     plot_df = pd.DataFrame()
-    
+
     for value in df[xbars].unique():
         x = df[df[xbars]==value][ybars].value_counts()
         plot_df = plot_df.append(x)
-        
+
     plot_df.index = df[xbars].unique()
-    
+
     return plot_df
 ```
 
@@ -605,7 +620,7 @@ plt.show()
 
     C:\Users\nwerner\AppData\Local\Continuum\Anaconda2\lib\site-packages\matplotlib\axes\_axes.py:545: UserWarning: No labelled objects found. Use label='...' kwarg on individual plots.
       warnings.warn("No labelled objects found. "
-    
+
 
 
 ![png](output_28_1.png)
@@ -649,7 +664,7 @@ df_reg.hist(column='Fare',ax=ax2)
 
     Skew for Age is: 0.513268914287
     Skew for Fare is: 4.36950955047
-    
+
 
 
 
@@ -681,7 +696,7 @@ logFare.hist(ax=ax2)
 
     Skew for Log(Age) is: -2.68722190291
     Skew for Log(Fare) is: 0.569434169491
-    
+
 
 
 
@@ -700,7 +715,7 @@ df_reg['logFare'] = logFare
 df_reg.drop('Fare', axis=1, inplace=True)
 ```
 
-#### Tree Algorithms 
+#### Tree Algorithms
 
 
 ```python
@@ -721,8 +736,8 @@ dfTrain_tree = df_tree[0:891]
 dfFinalTest_reg = df_reg[891:]
 dfFinalTest_tree = df_tree[891:]
 
-dfFinalTest_reg.drop(['Survived'],axis=1,inplace=True) 
-dfFinalTest_tree.drop(['Survived'],axis=1,inplace=True) 
+dfFinalTest_reg.drop(['Survived'],axis=1,inplace=True)
+dfFinalTest_tree.drop(['Survived'],axis=1,inplace=True)
 
 dfyTrain_reg = dfTrain_reg['Survived']
 dfyTrain_tree = dfTrain_tree['Survived']
@@ -731,24 +746,24 @@ dfXTrain_reg = dfTrain_reg.drop(['Survived'],axis=1)
 dfXTrain_tree = dfTrain_tree.drop(['Survived'],axis=1)
 ```
 
-    C:\Users\nwerner\AppData\Local\Continuum\Anaconda2\lib\site-packages\ipykernel_launcher.py:7: SettingWithCopyWarning: 
+    C:\Users\nwerner\AppData\Local\Continuum\Anaconda2\lib\site-packages\ipykernel_launcher.py:7: SettingWithCopyWarning:
     A value is trying to be set on a copy of a slice from a DataFrame
-    
+
     See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stable/indexing.html#indexing-view-versus-copy
       import sys
-    C:\Users\nwerner\AppData\Local\Continuum\Anaconda2\lib\site-packages\ipykernel_launcher.py:8: SettingWithCopyWarning: 
+    C:\Users\nwerner\AppData\Local\Continuum\Anaconda2\lib\site-packages\ipykernel_launcher.py:8: SettingWithCopyWarning:
     A value is trying to be set on a copy of a slice from a DataFrame
-    
+
     See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stable/indexing.html#indexing-view-versus-copy
-      
-    
+
+
 
 
 ```python
-X_train_reg, X_test_reg, y_train_reg,y_test_reg = train_test_split(dfXTrain_reg, dfyTrain_reg, train_size=0.8, random_state=0) 
+X_train_reg, X_test_reg, y_train_reg,y_test_reg = train_test_split(dfXTrain_reg, dfyTrain_reg, train_size=0.8, random_state=0)
 X_train_reg.shape, y_train_reg.shape, X_test_reg.shape, y_test_reg.shape
 
-X_train_tree, X_test_tree, y_train_tree,y_test_tree = train_test_split(dfXTrain_tree, dfyTrain_tree, train_size=0.8, random_state=0) 
+X_train_tree, X_test_tree, y_train_tree,y_test_tree = train_test_split(dfXTrain_tree, dfyTrain_tree, train_size=0.8, random_state=0)
 X_train_tree.shape, y_train_tree.shape, X_test_tree.shape, y_test_tree.shape
 ```
 
@@ -786,7 +801,7 @@ print 'Recall Score:', recallScoreLR
     F1 Score: 0.773722627737
     Precision Score: 0.779411764706
     Recall Score: 0.768115942029
-    
+
 
 
 ```python
@@ -818,26 +833,26 @@ def plot_confusion_matrix(cm, classes, normalize=False, title='Confusion Matrix'
 
     # This function prints the confusion matrix
     # Normalization can be applied by setting it to true
-    
+
     plt.imshow(cm, interpolation= 'nearest', cmap=cmap)
     plt.title(title)
     plt.colorbar()
     tick_marks = np.arange(len(classes))
     plt.xticks(tick_marks, classes, rotation=0)
     plt.yticks(tick_marks, classes)
-    
+
     if normalize==True:
         cm = cm.astype(float)/cm.sum(axis=1)[:, np.newaxis]
         print 'Normalized Confusion Matrix'
     else:
         print 'Confusion Matrix without Normalization'
-        
+
     print cm
-    
+
     thresh = cm.max()/2
     for i, j in itertools.product(range(cm.shape[0]), range(cm.shape[1])):
         plt.text(j, i, cm[i,j], horizontalalignment='center', color='white' if cm[i,j] > thresh else 'black')
-        
+
     plt.tight_layout()
     plt.ylabel('True Label')
     plt.xlabel('Predicted Label')
@@ -859,7 +874,7 @@ plt.show()
     Normalized Confusion Matrix
     [[ 0.86  0.14]
      [ 0.23  0.77]]
-    
+
 
 
 ![png](output_47_1.png)
@@ -947,7 +962,7 @@ print 'Recall Score:', recallScoreGB
     F1 Score: 0.755555555556
     Precision Score: 0.772727272727
     Recall Score: 0.739130434783
-    
+
 
 
 ```python
@@ -977,7 +992,7 @@ plt.show()
     Normalized Confusion Matrix
     [[ 0.86  0.14]
      [ 0.26  0.74]]
-    
+
 
 
 ![png](output_53_1.png)
@@ -1083,7 +1098,7 @@ print 'Recall Score:', recallScoreRF
     F1 Score: 0.71875
     Precision Score: 0.779661016949
     Recall Score: 0.666666666667
-    
+
 
 
 ```python
@@ -1113,7 +1128,7 @@ plt.show()
     Normalized Confusion Matrix
     [[ 0.88  0.12]
      [ 0.33  0.67]]
-    
+
 
 
 ![png](output_60_1.png)
@@ -1180,7 +1195,7 @@ elif algo.upper() == 'LR':
 ```
 
     Which Algorithm do you want to go with? (RF,GB,LR)gb
-    
+
 
 
 ```python
