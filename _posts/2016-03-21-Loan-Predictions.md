@@ -2,7 +2,7 @@
 layout: post
 title:  "Loan Predictions"
 date:   2018-03-10
-excerpt: "Predicting Loans Up in Here"
+excerpt: "HTML Copy/Paste"
 project: true
 tag:
 - jekyll
