@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Getting Started with Sleek
+title: Copy/Past HTML into Markdown
 featured-img: sleek
 ---
 

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Getting Started with Sleek
+title: Straight Markdown
 featured-img: sleek
 ---
 
