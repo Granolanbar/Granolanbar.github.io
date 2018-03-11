@@ -1,3 +1,17 @@
+---
+layout: post
+title:  "Loan Predictions"
+date:   2018-03-10
+excerpt: "Straight Markdown file"
+project: true
+tag:
+- jekyll
+- moon
+- blog
+- about
+- theme
+comments: false
+---
 
 # Loan Predictions - Classifier Algorithms
 
@@ -38,7 +52,7 @@ import seaborn as sns
 
     C:\Users\nwerner\AppData\Local\Continuum\Anaconda2\lib\site-packages\sklearn\cross_validation.py:41: DeprecationWarning: This module was deprecated in version 0.18 in favor of the model_selection module into which all the refactored classes and functions are moved. Also note that the interface of the new CV iterators are different from that of this module. This module will be removed in 0.20.
       "This module will be removed in 0.20.", DeprecationWarning)
-    
+
 
 
 ```python
@@ -49,7 +63,7 @@ df = pd.read_csv('LoansTrainingSet.csv') #,dtype=str
 
     C:\Users\nwerner\AppData\Local\Continuum\Anaconda2\lib\site-packages\IPython\core\interactiveshell.py:2717: DtypeWarning: Columns (16) have mixed types. Specify dtype option on import or set low_memory=False.
       interactivity=interactivity, compiler=compiler, result=result)
-    
+
 
 ### Preliminary Data Exploration
 
@@ -357,7 +371,7 @@ df.isnull().sum()
     Tax Liens                       256961 non-null float64
     dtypes: float64(6), int64(4), object(9)
     memory usage: 37.3+ MB
-    
+
 
 
 
@@ -412,7 +426,7 @@ for col in df.columns:
     Number of Unique Maximum Open Credit values:  87188
     Number of Unique Bankruptcies values:  8
     Number of Unique Tax Liens values:  12
-    
+
 
 
 ```python
@@ -430,10 +444,10 @@ dataFr.duplicated(subset='dessert') # Bools of Number of Duplicates
     1     cookie  banana
     2  ice cream  carrot
     3       cake   apple
-    4    brownie   apple 
-    
+    4    brownie   apple
+
     1
-    
+
 
 
 
@@ -449,7 +463,7 @@ dataFr.duplicated(subset='dessert') # Bools of Number of Duplicates
 
 
 ```python
-# Using drop duplicates, if I specify the multiple columns, it only drops the row if the values are identical in all of the specified columns 
+# Using drop duplicates, if I specify the multiple columns, it only drops the row if the values are identical in all of the specified columns
 
 #dataFr.drop_duplicates(subset=['fruit','dessert'],inplace=True)
 dataFr.drop_duplicates(inplace=True)
@@ -463,8 +477,8 @@ dataFr.info()
     0       cake   apple
     1     cookie  banana
     2  ice cream  carrot
-    4    brownie   apple 
-    
+    4    brownie   apple
+
     <class 'pandas.core.frame.DataFrame'>
     Int64Index: 4 entries, 0 to 4
     Data columns (total 2 columns):
@@ -472,7 +486,7 @@ dataFr.info()
     fruit      4 non-null object
     dtypes: object(2)
     memory usage: 96.0+ bytes
-    
+
 
 
 ```python
@@ -487,25 +501,25 @@ print (len(df)-df['Loan ID'].nunique()), 'more Rows to drop.'
     Down to 240374 rows.
     There are 215700 values.
     24674 more Rows to drop.
-    
+
 
 
 ```python
 # There are still some duplicated rows
 
-x = df.duplicated(subset=['Loan ID']) 
+x = df.duplicated(subset=['Loan ID'])
 rowsToDrop = []
 
 for i,bool in enumerate(x):
     if bool == True:
         rowsToDrop.append(i)
-        
+
 print len(rowsToDrop)
 rowsToDrop
 ```
 
     24674
-    
+
 
 
 
@@ -1517,40 +1531,40 @@ rowsToDrop
 
 ```python
 def removeDups(indexOfDups,DF):
-    
+
     indexesToDrop=[]
     i=0
     skip=0
-    
+
     for i,value in enumerate(indexOfDups):
-        
+
         if skip>0:
             skip-=1
             continue
-        
+
         j=1
         indexesToCompare = [value-1,value]
         nulls=[]
-        
+
         if (i+j)<(len(indexOfDups)-1):
             while (indexOfDups[i+j]==value+j):
                 indexesToCompare.append(value+j)
                 j+=1
                 skip+=1
-        
+
         for index in indexesToCompare:
             nullCount=0
             for feature in df.iloc[index]:
                 if (pd.isnull(feature)==True)|(feature=='n/a')|(feature=='NA')|(feature=='#VALUE!')|(feature==99999999)|(feature=='nan'):
                     nullCount+=1
             nulls.append(nullCount)
-            
+
         leastNulls = np.argmin(nulls)
         del indexesToCompare[leastNulls]
-        
+
         indexesToDrop.append(indexesToCompare)
         print 'Still Working. Just Finished Looping on Index:',i
-        
+
     return indexesToDrop
 ```
 
@@ -1566,8 +1580,8 @@ rowsToDelete = [item for sublist in rowsToDelete for item in sublist]
 print '\n','Run Time:', (time.time()-start_time), 'seconds'
 ```
 
-    Number of Rows to Drop: 24674 
-    
+    Number of Rows to Drop: 24674
+
     Still Working. Just Finished Looping on Index: 0
     Still Working. Just Finished Looping on Index: 1
     Still Working. Just Finished Looping on Index: 3
@@ -24980,9 +24994,9 @@ print '\n','Run Time:', (time.time()-start_time), 'seconds'
     Still Working. Just Finished Looping on Index: 24671
     Still Working. Just Finished Looping on Index: 24672
     Still Working. Just Finished Looping on Index: 24673
-    
+
     Run Time: 24.6739997864 seconds
-    
+
 
 
 ```python
@@ -24993,13 +25007,13 @@ df.drop(df.index[rowsToDelete],inplace=True,axis=0)
 '''for value in rowsToDelete:
     df.drop(df.index[value])
     print 'Just finished dropping row',value'''
-    
+
 print len(df['Loan ID']), len(df['Years in current job'])
 ```
 
     24674
     215700 215700
-    
+
 
 
 ```python
@@ -25073,10 +25087,10 @@ print df.duplicated().sum()
     Maximum Open Credit                  0
     Bankruptcies                       452
     Tax Liens                           22
-    dtype: int64 
-    
+    dtype: int64
+
     0
-    
+
 
 
 ```python
@@ -25103,12 +25117,12 @@ for col in df.columns:
     print col, df[col].unique(), '\n'  
 ```
 
-    Loan Status ['Fully Paid' 'Charged Off'] 
-    
-    Current Loan Amount [11520  3441 21029 ..., 15352 29071 11524] 
-    
-    Term ['Short Term' 'Long Term'] 
-    
+    Loan Status ['Fully Paid' 'Charged Off']
+
+    Current Loan Amount [11520  3441 21029 ..., 15352 29071 11524]
+
+    Term ['Short Term' 'Long Term']
+
     Credit Score [  741.   734.   747.   746.   716.  6640.    nan   733.   742.   701.
        744.   729.   745.   728.   724.   692.   739.   740.   607.   735.
        623.   750.   737.   636.   736.   715.   727.   743.  7320.   751.
@@ -25142,21 +25156,21 @@ for col in df.columns:
       6080.  6100.  6210.   596.  6040.  6330.  6190.   617.  6290.  6300.
        597.  6230.  5980.  5950.  6000.  5890.   598.  6020.  5870.  6120.
        588.   590.  6060.  5920.  5900.  6090.  5850.  5880.  6340.  6010.
-      5860.  5930.  6070.  5960.  5910.] 
-    
+      5860.  5930.  6070.  5960.  5910.]
+
     Years in current job ['10+ years' '4 years' '6 years' '5 years' 'n/a' '3 years' '2 years'
-     '< 1 year' '1 year' '7 years' '9 years' '8 years'] 
-    
-    Home Ownership ['Home Mortgage' 'Own Home' 'Rent' 'HaveMortgage'] 
-    
-    Annual Income [ 33694.  42269.  90126. ...,  38649.  34749.  30854.] 
-    
+     '< 1 year' '1 year' '7 years' '9 years' '8 years']
+
+    Home Ownership ['Home Mortgage' 'Own Home' 'Rent' 'HaveMortgage']
+
+    Annual Income [ 33694.  42269.  90126. ...,  38649.  34749.  30854.]
+
     Purpose ['Debt Consolidation' 'other' 'Business Loan' 'Home Improvements'
      'Buy House' 'Other' 'Buy a Car' 'Medical Bills' 'Take a Trip'
-     'Educational Expenses'] 
-    
-    Monthly Debt ['$584.03' '$1,106.04 ' '$1,321.85 ' ..., '$707.08' '$47.11' '$2,525.82 '] 
-    
+     'Educational Expenses']
+
+    Monthly Debt ['$584.03' '$1,106.04 ' '$1,321.85 ' ..., '$707.08' '$47.11' '$2,525.82 ']
+
     Years of Credit History [ 12.3  26.3  28.8  26.2  11.5  13.2  17.6  17.7  19.8  26.8  19.2   9.9
       21.   18.8  15.   14.9  17.8  15.4  30.3  19.9  14.   29.6  13.6  13.8
       15.5  18.   15.1  16.2  14.6  27.2  22.   14.1  26.1  23.1  20.8  28.6
@@ -25202,8 +25216,8 @@ for col in df.columns:
       64.6  49.1  57.7  56.5  55.8  49.7  49.2  57.1  55.4  52.2  58.8  56.8
       55.   61.8  70.5  54.2  55.5  52.6  48.8  53.4  57.8  53.   55.6  56.9
       54.3  59.9   3.4  55.7  57.   57.6  54.7  65.   54.1  54.   66.   59.1
-      60.7] 
-    
+      60.7]
+
     Months since last delinquent [  41.   nan   73.   29.   43.   79.    2.   15.   27.    5.   55.   21.
        56.   25.   67.   37.   74.   45.   76.   46.   35.   60.   28.   34.
        13.    7.   17.   22.   42.   53.   12.   39.   71.   20.   38.    0.
@@ -25214,23 +25228,23 @@ for col in df.columns:
        64.   84.   83.  104.   90.  149.   96.  110.   99.   91.   95.  152.
        87.  131.  100.  116.  106.  107.   85.   89.  101.  122.   93.  135.
       139.   88.  148.   92.   94.  114.  143.  115.  108.  140.  130.   98.
-       97.  120.  102.  176.  151.  118.  109.  134.  112.  113.  133.  119.] 
-    
+       97.  120.  102.  176.  151.  118.  109.  134.  112.  113.  133.  119.]
+
     Number of Open Accounts [10 17  5  9 12  4  7 11  8 13 14 16 22 34 28  6 15  3 24  2 21 20 19 25 29
      18 23 35 32 31 26 47 30 27 37 40 33 36 39 38 42 48 76 50 44 41  1 56 43 53
-      0 46 49 45 55 52 51 58 54] 
-    
-    Number of Credit Problems [ 0  1  2  5  3  4  6  7  9 10  8 11] 
-    
-    Current Credit Balance [ 6760  6262 20967 ..., 31006 33895 35089] 
-    
-    Maximum Open Credit [16056L 19149L 28335L ..., 55520L 37004L 62371L] 
-    
-    Bankruptcies [  0.   1.   2.  nan   3.   4.   5.   7.   6.] 
-    
-    Tax Liens [  0.   5.  nan   1.   2.   4.   3.   6.   7.   9.   8.  10.  11.] 
-    
-    
+      0 46 49 45 55 52 51 58 54]
+
+    Number of Credit Problems [ 0  1  2  5  3  4  6  7  9 10  8 11]
+
+    Current Credit Balance [ 6760  6262 20967 ..., 31006 33895 35089]
+
+    Maximum Open Credit [16056L 19149L 28335L ..., 55520L 37004L 62371L]
+
+    Bankruptcies [  0.   1.   2.  nan   3.   4.   5.   7.   6.]
+
+    Tax Liens [  0.   5.  nan   1.   2.   4.   3.   6.   7.   9.   8.  10.  11.]
+
+
 
 
 ```python
@@ -25304,8 +25318,8 @@ print df['Current Loan Amount'].value_counts()
     26082           1
     24255           1
     21933           1
-    Name: Current Loan Amount, Length: 27306, dtype: int64 
-    
+    Name: Current Loan Amount, Length: 27306, dtype: int64
+
     11968.0    35234
     9793.0        50
     9820.0        48
@@ -25368,13 +25382,13 @@ print df['Current Loan Amount'].value_counts()
     15705.0        1
     20165.0        1
     Name: Current Loan Amount, Length: 27305, dtype: int64
-    
+
 
 
 ```python
 # I am assuming the credit scores > 1000 are a typo where they added a zero to the end of them
 # Removing the last 0 in (4) digit credit scores
-        
+
 df['Credit Score'] = df['Credit Score'].apply(lambda x: x/10 if x>=1000 else x)
 print df['Credit Score'].unique(), '\n'
 
@@ -25402,10 +25416,10 @@ df['Credit Score'].fillna(df['Credit Score'].median(), inplace=True)
       602.  639.  638.  643.  601.  619.  641.  645.  605.  631.  654.  648.
       628.  644.  633.  647.  624.  646.  659.  621.  611.  618.  595.  591.
       594.  620.  630.  626.  599.  627.  614.  597.  629.  604.  587.  593.
-      634.  586.  592.  608.  617.  589.  600.  585.  596.  598.  588.  590.] 
-    
+      634.  586.  592.  608.  617.  589.  600.  585.  596.  598.  588.  590.]
+
     0
-    
+
 
 
 ```python
@@ -25429,8 +25443,8 @@ print df['Years in current job'].value_counts()
     8 years      10232
     n/a           8990
     9 years       8272
-    Name: Years in current job, dtype: int64 
-    
+    Name: Years in current job, dtype: int64
+
     10+ years    66711
     2 years      19831
     < 1 year     17544
@@ -25444,7 +25458,7 @@ print df['Years in current job'].value_counts()
     No Job        8990
     9 years       8272
     Name: Years in current job, dtype: int64
-    
+
 
 
 ```python
@@ -25455,7 +25469,7 @@ df['Annual Income'].fillna(df['Annual Income'].median(), inplace=True)
 ```
 
     62105.0
-    
+
 
 
 ```python
@@ -25469,7 +25483,7 @@ print df['Purpose'].unique()
     ['Debt Consolidation' 'other' 'Business Loan' 'Home Improvements'
      'Buy House' 'Buy a Car' 'Medical Bills' 'Take a Trip'
      'Educational Expenses']
-    
+
 
 
 ```python
@@ -25482,7 +25496,7 @@ print df['Months since last delinquent'].max()
 ```
 
     177.0
-    
+
 
 
 ```python
@@ -25493,8 +25507,8 @@ print df['Maximum Open Credit'].value_counts(), '\n'
 df['Maximum Open Credit'].replace(to_replace='#VALUE!',value=0,inplace=True)
 ```
 
-    2 
-    
+    2
+
     0         1381
     0          206
     15662       15
@@ -25525,7 +25539,7 @@ df['Maximum Open Credit'].replace(to_replace='#VALUE!',value=0,inplace=True)
     19467       13
     11553       13
     18386       13
-              ... 
+              ...
     7444         1
     65548        1
     41301        1
@@ -25556,9 +25570,9 @@ df['Maximum Open Credit'].replace(to_replace='#VALUE!',value=0,inplace=True)
     65511        1
     65510        1
     34645        1
-    Name: Maximum Open Credit, Length: 87024, dtype: int64 
-    
-    
+    Name: Maximum Open Credit, Length: 87024, dtype: int64
+
+
 
 
 ```python
@@ -25679,7 +25693,7 @@ df.info()
     Had Tax Lien?                   215700 non-null int64
     dtypes: float64(7), int64(8), object(7)
     memory usage: 37.9+ MB
-    
+
 
 
 ```python
@@ -25729,7 +25743,7 @@ df.info()
     Had Tax Lien?                   215700 non-null int64
     dtypes: float64(8), int64(9), object(5)
     memory usage: 37.9+ MB
-    
+
 
 
 ```python
@@ -25753,15 +25767,15 @@ sns.heatmap(corr, xticklabels=corr.columns.values, yticklabels=corr.columns.valu
 
 ```python
 def plotStackedBars(xbars, ybars, df):
-    
+
     plot_df = pd.DataFrame()
-    
+
     for value in df[xbars].unique():
         x = df[df[xbars]==value][ybars].value_counts()
         plot_df = plot_df.append(x)
-        
+
     plot_df.index = df[xbars].unique()
-    
+
     return plot_df
 ```
 
@@ -25831,7 +25845,7 @@ plt.show()
 
     C:\Users\nwerner\AppData\Local\Continuum\Anaconda2\lib\site-packages\matplotlib\axes\_axes.py:545: UserWarning: No labelled objects found. Use label='...' kwarg on individual plots.
       warnings.warn("No labelled objects found. "
-    
+
 
 
 ![png](output_50_1.png)
@@ -25885,7 +25899,7 @@ df.info()
     Had Tax Lien?                   215700 non-null int64
     dtypes: float64(8), int64(9), object(5)
     memory usage: 37.9+ MB
-    
+
 
 
 ```python
@@ -25902,7 +25916,7 @@ print df['Loan Status'].value_counts()
     1    176191
     0     39509
     Name: Loan Status, dtype: int64
-    
+
 
 
 ```python
@@ -26092,7 +26106,7 @@ X = df.drop(['Loan Status'], axis=1)
 
 
 ```python
-X_train, X_test, y_train,y_test = tts(X,y,train_size=0.8, random_state=17) 
+X_train, X_test, y_train,y_test = tts(X,y,train_size=0.8, random_state=17)
 X_train.shape, y_train.shape, X_test.shape, y_test.shape
 ```
 
@@ -26123,11 +26137,11 @@ print 'Logistic Regression F1 Score:', f1ScoreLR
 
     C:\Users\nwerner\AppData\Local\Continuum\Anaconda2\lib\site-packages\sklearn\grid_search.py:42: DeprecationWarning: This module was deprecated in version 0.18 in favor of the model_selection module into which all the refactored classes and functions are moved. This module will be removed in 0.20.
       DeprecationWarning)
-    
+
 
     Logistic Regression Accuracy Score: 0.815345387112
     Logistic Regression F1 Score: 0.898281277932
-    
+
 
 
 ```python
@@ -26147,7 +26161,7 @@ print 'Gradient Boosting F1 Score:', f1ScoreGB
 
     Gradient Boosting Accuracy Score: 0.815368567455
     Gradient Boosting F1 Score: 0.898295345719
-    
+
 
 
 ```python
@@ -26167,7 +26181,7 @@ print 'Random Forest F1 Score:', f1ScoreRF
 
     Random Forest Accuracy Score: 0.801761706073
     Random Forest F1 Score: 0.883497261804
-    
+
 
 ### Confusion Matrix
 
@@ -26180,26 +26194,26 @@ def plot_confusion_matrix(cm, classes, normalize=False, title='Confusion Matrix'
 
     # This function prints the confusion matrix
     # Normalization can be applied by setting it to true
-    
+
     plt.imshow(cm, interpolation= 'nearest', cmap=cmap)
     plt.title(title)
     plt.colorbar()
     tick_marks = np.arange(len(classes))
     plt.xticks(tick_marks, classes, rotation=0)
     plt.yticks(tick_marks, classes)
-    
+
     if normalize==True:
         cm = cm.astype(float)/cm.sum(axis=1)[:, np.newaxis]
         print 'Normalized Confusion Matrix'
     else:
         print 'Confusion Matrix without Normalization'
-        
+
     print cm
-    
+
     thresh = cm.max()/2
     for i, j in itertools.product(range(cm.shape[0]), range(cm.shape[1])):
         plt.text(j, i, cm[i,j], horizontalalignment='center', color='white' if cm[i,j] > thresh else 'black')
-        
+
     plt.tight_layout()
     plt.ylabel('True Label')
     plt.xlabel('Predicted Label')
@@ -26221,7 +26235,7 @@ plt.show()
     Normalized Confusion Matrix
     [[  0.00e+00   1.00e+00]
      [  2.84e-05   1.00e+00]]
-    
+
 
 
 ![png](output_65_1.png)
@@ -26272,7 +26286,7 @@ ggplot(ROCdfLR, aes(x='fpr', y='tpr')) + geom_line() + geom_abline(linetype='das
       from pandas.lib import Timestamp
     C:\Users\nwerner\AppData\Local\Continuum\Anaconda2\lib\site-packages\statsmodels\compat\pandas.py:56: FutureWarning: The pandas.core.datetools module is deprecated and will be removed in a future version. Please use the pandas.tseries module instead.
       from pandas.core import datetools
-    
+
 
 
 ![png](output_68_1.png)
