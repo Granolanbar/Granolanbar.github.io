@@ -4,7 +4,6 @@ title: Copy/Past HTML into Markdown
 featured-img: sleek
 ---
 
-<!DOCTYPE html>
 <html>
 <head><meta charset="utf-8" />
 <title>Project 1 - Loan Predictions 3.0</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
