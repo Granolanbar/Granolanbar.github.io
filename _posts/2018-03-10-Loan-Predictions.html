@@ -1,3 +1,18 @@
+---
+layout: post
+title:  "Loan Predictions"
+date:   2018-003-10
+excerpt: "Predicting Loans up in Here"
+project: true
+tag:
+- jekyll
+- moon
+- blog
+- about
+- theme
+comments: false
+---
+
 <!DOCTYPE html>
 <html>
 <head><meta charset="utf-8" />
@@ -8451,15 +8466,15 @@ label {
 }
 /* Flexible box model classes */
 /* Taken from Alex Russell http://infrequently.org/2009/08/css-3-progress/ */
-/* This file is a compatability layer.  It allows the usage of flexible box 
+/* This file is a compatability layer.  It allows the usage of flexible box
 model layouts accross multiple browsers, including older browsers.  The newest,
 universal implementation of the flexible box model is used when available (see
-`Modern browsers` comments below).  Browsers that are known to implement this 
+`Modern browsers` comments below).  Browsers that are known to implement this
 new spec completely include:
 
     Firefox 28.0+
     Chrome 29.0+
-    Internet Explorer 11+ 
+    Internet Explorer 11+
     Opera 17.0+
 
 Browsers not listed, including Safari, are supported via the styling under the
@@ -11233,7 +11248,7 @@ div#pager .ui-resizable-handle {
   background: #f7f7f7;
   border-top: 1px solid #cfcfcf;
   border-bottom: 1px solid #cfcfcf;
-  /* This injects handle bars (a short, wide = symbol) for 
+  /* This injects handle bars (a short, wide = symbol) for
         the resize handle. */
 }
 div#pager .ui-resizable-handle::after {
@@ -11676,7 +11691,7 @@ ul.typeahead-list > li > a {
 .highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
     </style>
 <style type="text/css">
-    
+
 /* Temporary definitions which will become obsolete with Notebook release 5.0 */
 .ansi-black-fg { color: #3E424D; }
 .ansi-black-bg { background-color: #3E424D; }
@@ -11732,14 +11747,14 @@ div#notebook {
   div.cell {
     display: block;
     page-break-inside: avoid;
-  } 
-  div.output_wrapper { 
-    display: block;
-    page-break-inside: avoid; 
   }
-  div.output { 
+  div.output_wrapper {
     display: block;
-    page-break-inside: avoid; 
+    page-break-inside: avoid;
+  }
+  div.output {
+    display: block;
+    page-break-inside: avoid;
   }
 }
 </style>
@@ -12370,7 +12385,7 @@ Number of Unique Tax Liens values:  12
 1     cookie  banana
 2  ice cream  carrot
 3       cake   apple
-4    brownie   apple 
+4    brownie   apple
 
 1
 </pre>
@@ -12427,7 +12442,7 @@ dtype: bool</pre>
 0       cake   apple
 1     cookie  banana
 2  ice cream  carrot
-4    brownie   apple 
+4    brownie   apple
 
 &lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
 Int64Index: 4 entries, 0 to 4
@@ -12487,13 +12502,13 @@ There are 215700 values.
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># There are still some duplicated rows</span>
 
-<span class="n">x</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">duplicated</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Loan ID&#39;</span><span class="p">])</span> 
+<span class="n">x</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">duplicated</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Loan ID&#39;</span><span class="p">])</span>
 <span class="n">rowsToDrop</span> <span class="o">=</span> <span class="p">[]</span>
 
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="nb">bool</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="k">if</span> <span class="nb">bool</span> <span class="o">==</span> <span class="bp">True</span><span class="p">:</span>
         <span class="n">rowsToDrop</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-        
+
 <span class="k">print</span> <span class="nb">len</span><span class="p">(</span><span class="n">rowsToDrop</span><span class="p">)</span>
 <span class="n">rowsToDrop</span>
 </pre></div>
@@ -13536,40 +13551,40 @@ There are 215700 values.
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">removeDups</span><span class="p">(</span><span class="n">indexOfDups</span><span class="p">,</span><span class="n">DF</span><span class="p">):</span>
-    
+
     <span class="n">indexesToDrop</span><span class="o">=</span><span class="p">[]</span>
     <span class="n">i</span><span class="o">=</span><span class="mi">0</span>
     <span class="n">skip</span><span class="o">=</span><span class="mi">0</span>
-    
+
     <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">indexOfDups</span><span class="p">):</span>
-        
+
         <span class="k">if</span> <span class="n">skip</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">:</span>
             <span class="n">skip</span><span class="o">-=</span><span class="mi">1</span>
             <span class="k">continue</span>
-        
+
         <span class="n">j</span><span class="o">=</span><span class="mi">1</span>
         <span class="n">indexesToCompare</span> <span class="o">=</span> <span class="p">[</span><span class="n">value</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">value</span><span class="p">]</span>
         <span class="n">nulls</span><span class="o">=</span><span class="p">[]</span>
-        
+
         <span class="k">if</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="n">j</span><span class="p">)</span><span class="o">&lt;</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">indexOfDups</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
             <span class="k">while</span> <span class="p">(</span><span class="n">indexOfDups</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="n">j</span><span class="p">]</span><span class="o">==</span><span class="n">value</span><span class="o">+</span><span class="n">j</span><span class="p">):</span>
                 <span class="n">indexesToCompare</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="o">+</span><span class="n">j</span><span class="p">)</span>
                 <span class="n">j</span><span class="o">+=</span><span class="mi">1</span>
                 <span class="n">skip</span><span class="o">+=</span><span class="mi">1</span>
-        
+
         <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="n">indexesToCompare</span><span class="p">:</span>
             <span class="n">nullCount</span><span class="o">=</span><span class="mi">0</span>
             <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">index</span><span class="p">]:</span>
                 <span class="k">if</span> <span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">isnull</span><span class="p">(</span><span class="n">feature</span><span class="p">)</span><span class="o">==</span><span class="bp">True</span><span class="p">)</span><span class="o">|</span><span class="p">(</span><span class="n">feature</span><span class="o">==</span><span class="s1">&#39;n/a&#39;</span><span class="p">)</span><span class="o">|</span><span class="p">(</span><span class="n">feature</span><span class="o">==</span><span class="s1">&#39;NA&#39;</span><span class="p">)</span><span class="o">|</span><span class="p">(</span><span class="n">feature</span><span class="o">==</span><span class="s1">&#39;#VALUE!&#39;</span><span class="p">)</span><span class="o">|</span><span class="p">(</span><span class="n">feature</span><span class="o">==</span><span class="mi">99999999</span><span class="p">)</span><span class="o">|</span><span class="p">(</span><span class="n">feature</span><span class="o">==</span><span class="s1">&#39;nan&#39;</span><span class="p">):</span>
                     <span class="n">nullCount</span><span class="o">+=</span><span class="mi">1</span>
             <span class="n">nulls</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nullCount</span><span class="p">)</span>
-            
+
         <span class="n">leastNulls</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">nulls</span><span class="p">)</span>
         <span class="k">del</span> <span class="n">indexesToCompare</span><span class="p">[</span><span class="n">leastNulls</span><span class="p">]</span>
-        
+
         <span class="n">indexesToDrop</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">indexesToCompare</span><span class="p">)</span>
         <span class="k">print</span> <span class="s1">&#39;Still Working. Just Finished Looping on Index:&#39;</span><span class="p">,</span><span class="n">i</span>
-        
+
     <span class="k">return</span> <span class="n">indexesToDrop</span>
 </pre></div>
 
@@ -13605,7 +13620,7 @@ There are 215700 values.
 <div class="prompt"></div>
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Number of Rows to Drop: 24674 
+<pre>Number of Rows to Drop: 24674
 
 Still Working. Just Finished Looping on Index: 0
 Still Working. Just Finished Looping on Index: 1
@@ -37041,7 +37056,7 @@ Run Time: 24.6739997864 seconds
 <span class="sd">&#39;&#39;&#39;for value in rowsToDelete:</span>
 <span class="sd">    df.drop(df.index[value])</span>
 <span class="sd">    print &#39;Just finished dropping row&#39;,value&#39;&#39;&#39;</span>
-    
+
 <span class="k">print</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Loan ID&#39;</span><span class="p">]),</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Years in current job&#39;</span><span class="p">])</span>
 </pre></div>
 
@@ -37173,7 +37188,7 @@ Current Credit Balance               0
 Maximum Open Credit                  0
 Bankruptcies                       452
 Tax Liens                           22
-dtype: int64 
+dtype: int64
 
 0
 </pre>
@@ -37225,7 +37240,7 @@ dtype: int64
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
-    <span class="k">print</span> <span class="n">col</span><span class="p">,</span> <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">(),</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>  
+    <span class="k">print</span> <span class="n">col</span><span class="p">,</span> <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">(),</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
 </pre></div>
 
 </div>
@@ -37240,11 +37255,11 @@ dtype: int64
 <div class="prompt"></div>
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Loan Status [&#39;Fully Paid&#39; &#39;Charged Off&#39;] 
+<pre>Loan Status [&#39;Fully Paid&#39; &#39;Charged Off&#39;]
 
-Current Loan Amount [11520  3441 21029 ..., 15352 29071 11524] 
+Current Loan Amount [11520  3441 21029 ..., 15352 29071 11524]
 
-Term [&#39;Short Term&#39; &#39;Long Term&#39;] 
+Term [&#39;Short Term&#39; &#39;Long Term&#39;]
 
 Credit Score [  741.   734.   747.   746.   716.  6640.    nan   733.   742.   701.
    744.   729.   745.   728.   724.   692.   739.   740.   607.   735.
@@ -37279,20 +37294,20 @@ Credit Score [  741.   734.   747.   746.   716.  6640.    nan   733.   742.   7
   6080.  6100.  6210.   596.  6040.  6330.  6190.   617.  6290.  6300.
    597.  6230.  5980.  5950.  6000.  5890.   598.  6020.  5870.  6120.
    588.   590.  6060.  5920.  5900.  6090.  5850.  5880.  6340.  6010.
-  5860.  5930.  6070.  5960.  5910.] 
+  5860.  5930.  6070.  5960.  5910.]
 
 Years in current job [&#39;10+ years&#39; &#39;4 years&#39; &#39;6 years&#39; &#39;5 years&#39; &#39;n/a&#39; &#39;3 years&#39; &#39;2 years&#39;
- &#39;&lt; 1 year&#39; &#39;1 year&#39; &#39;7 years&#39; &#39;9 years&#39; &#39;8 years&#39;] 
+ &#39;&lt; 1 year&#39; &#39;1 year&#39; &#39;7 years&#39; &#39;9 years&#39; &#39;8 years&#39;]
 
-Home Ownership [&#39;Home Mortgage&#39; &#39;Own Home&#39; &#39;Rent&#39; &#39;HaveMortgage&#39;] 
+Home Ownership [&#39;Home Mortgage&#39; &#39;Own Home&#39; &#39;Rent&#39; &#39;HaveMortgage&#39;]
 
-Annual Income [ 33694.  42269.  90126. ...,  38649.  34749.  30854.] 
+Annual Income [ 33694.  42269.  90126. ...,  38649.  34749.  30854.]
 
 Purpose [&#39;Debt Consolidation&#39; &#39;other&#39; &#39;Business Loan&#39; &#39;Home Improvements&#39;
  &#39;Buy House&#39; &#39;Other&#39; &#39;Buy a Car&#39; &#39;Medical Bills&#39; &#39;Take a Trip&#39;
- &#39;Educational Expenses&#39;] 
+ &#39;Educational Expenses&#39;]
 
-Monthly Debt [&#39;$584.03&#39; &#39;$1,106.04 &#39; &#39;$1,321.85 &#39; ..., &#39;$707.08&#39; &#39;$47.11&#39; &#39;$2,525.82 &#39;] 
+Monthly Debt [&#39;$584.03&#39; &#39;$1,106.04 &#39; &#39;$1,321.85 &#39; ..., &#39;$707.08&#39; &#39;$47.11&#39; &#39;$2,525.82 &#39;]
 
 Years of Credit History [ 12.3  26.3  28.8  26.2  11.5  13.2  17.6  17.7  19.8  26.8  19.2   9.9
   21.   18.8  15.   14.9  17.8  15.4  30.3  19.9  14.   29.6  13.6  13.8
@@ -37339,7 +37354,7 @@ Years of Credit History [ 12.3  26.3  28.8  26.2  11.5  13.2  17.6  17.7  19.8  
   64.6  49.1  57.7  56.5  55.8  49.7  49.2  57.1  55.4  52.2  58.8  56.8
   55.   61.8  70.5  54.2  55.5  52.6  48.8  53.4  57.8  53.   55.6  56.9
   54.3  59.9   3.4  55.7  57.   57.6  54.7  65.   54.1  54.   66.   59.1
-  60.7] 
+  60.7]
 
 Months since last delinquent [  41.   nan   73.   29.   43.   79.    2.   15.   27.    5.   55.   21.
    56.   25.   67.   37.   74.   45.   76.   46.   35.   60.   28.   34.
@@ -37351,21 +37366,21 @@ Months since last delinquent [  41.   nan   73.   29.   43.   79.    2.   15.   
    64.   84.   83.  104.   90.  149.   96.  110.   99.   91.   95.  152.
    87.  131.  100.  116.  106.  107.   85.   89.  101.  122.   93.  135.
   139.   88.  148.   92.   94.  114.  143.  115.  108.  140.  130.   98.
-   97.  120.  102.  176.  151.  118.  109.  134.  112.  113.  133.  119.] 
+   97.  120.  102.  176.  151.  118.  109.  134.  112.  113.  133.  119.]
 
 Number of Open Accounts [10 17  5  9 12  4  7 11  8 13 14 16 22 34 28  6 15  3 24  2 21 20 19 25 29
  18 23 35 32 31 26 47 30 27 37 40 33 36 39 38 42 48 76 50 44 41  1 56 43 53
-  0 46 49 45 55 52 51 58 54] 
+  0 46 49 45 55 52 51 58 54]
 
-Number of Credit Problems [ 0  1  2  5  3  4  6  7  9 10  8 11] 
+Number of Credit Problems [ 0  1  2  5  3  4  6  7  9 10  8 11]
 
-Current Credit Balance [ 6760  6262 20967 ..., 31006 33895 35089] 
+Current Credit Balance [ 6760  6262 20967 ..., 31006 33895 35089]
 
-Maximum Open Credit [16056L 19149L 28335L ..., 55520L 37004L 62371L] 
+Maximum Open Credit [16056L 19149L 28335L ..., 55520L 37004L 62371L]
 
-Bankruptcies [  0.   1.   2.  nan   3.   4.   5.   7.   6.] 
+Bankruptcies [  0.   1.   2.  nan   3.   4.   5.   7.   6.]
 
-Tax Liens [  0.   5.  nan   1.   2.   4.   3.   6.   7.   9.   8.  10.  11.] 
+Tax Liens [  0.   5.  nan   1.   2.   4.   3.   6.   7.   9.   8.  10.  11.]
 
 </pre>
 </div>
@@ -37431,7 +37446,7 @@ Tax Liens [  0.   5.  nan   1.   2.   4.   3.   6.   7.   9.   8.  10.  11.]
 9931           39
 9826           39
 9980           39
-            ...  
+            ...
 19943           1
 23378           1
 19773           1
@@ -37462,7 +37477,7 @@ Tax Liens [  0.   5.  nan   1.   2.   4.   3.   6.   7.   9.   8.  10.  11.]
 26082           1
 24255           1
 21933           1
-Name: Current Loan Amount, Length: 27306, dtype: int64 
+Name: Current Loan Amount, Length: 27306, dtype: int64
 
 11968.0    35234
 9793.0        50
@@ -37494,7 +37509,7 @@ Name: Current Loan Amount, Length: 27306, dtype: int64
 9826.0        39
 7938.0        39
 10085.0       39
-           ...  
+           ...
 27092.0        1
 2868.0         1
 17462.0        1
@@ -37541,7 +37556,7 @@ Name: Current Loan Amount, Length: 27305, dtype: int64
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># I am assuming the credit scores &gt; 1000 are a typo where they added a zero to the end of them</span>
 <span class="c1"># Removing the last 0 in (4) digit credit scores</span>
-        
+
 <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Credit Score&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Credit Score&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">/</span><span class="mi">10</span> <span class="k">if</span> <span class="n">x</span><span class="o">&gt;=</span><span class="mi">1000</span> <span class="k">else</span> <span class="n">x</span><span class="p">)</span>
 <span class="k">print</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Credit Score&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">(),</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
 
@@ -37581,7 +37596,7 @@ Name: Current Loan Amount, Length: 27305, dtype: int64
   602.  639.  638.  643.  601.  619.  641.  645.  605.  631.  654.  648.
   628.  644.  633.  647.  624.  646.  659.  621.  611.  618.  595.  591.
   594.  620.  630.  626.  599.  627.  614.  597.  629.  604.  587.  593.
-  634.  586.  592.  608.  617.  589.  600.  585.  596.  598.  588.  590.] 
+  634.  586.  592.  608.  617.  589.  600.  585.  596.  598.  588.  590.]
 
 0
 </pre>
@@ -37629,7 +37644,7 @@ Name: Current Loan Amount, Length: 27305, dtype: int64
 8 years      10232
 n/a           8990
 9 years       8272
-Name: Years in current job, dtype: int64 
+Name: Years in current job, dtype: int64
 
 10+ years    66711
 2 years      19831
@@ -37777,7 +37792,7 @@ Name: Years in current job, dtype: int64
 <div class="prompt"></div>
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>2 
+<pre>2
 
 0         1381
 0          206
@@ -37809,7 +37824,7 @@ Name: Years in current job, dtype: int64
 19467       13
 11553       13
 18386       13
-          ... 
+          ...
 7444         1
 65548        1
 41301        1
@@ -37840,7 +37855,7 @@ Name: Years in current job, dtype: int64
 65511        1
 65510        1
 34645        1
-Name: Maximum Open Credit, Length: 87024, dtype: int64 
+Name: Maximum Open Credit, Length: 87024, dtype: int64
 
 </pre>
 </div>
@@ -39173,15 +39188,15 @@ izYiIiIiIiKFsWgjIiIiIiJS2P8A6V00nhwfwO8AAAAASUVORK5CYII=
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">plotStackedBars</span><span class="p">(</span><span class="n">xbars</span><span class="p">,</span> <span class="n">ybars</span><span class="p">,</span> <span class="n">df</span><span class="p">):</span>
-    
+
     <span class="n">plot_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
-    
+
     <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">df</span><span class="p">[</span><span class="n">xbars</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">():</span>
         <span class="n">x</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="n">xbars</span><span class="p">]</span><span class="o">==</span><span class="n">value</span><span class="p">][</span><span class="n">ybars</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
         <span class="n">plot_df</span> <span class="o">=</span> <span class="n">plot_df</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-        
+
     <span class="n">plot_df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">xbars</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
-    
+
     <span class="k">return</span> <span class="n">plot_df</span>
 </pre></div>
 
@@ -40882,7 +40897,7 @@ Name: Loan Status, dtype: int64
 <div class="prompt input_prompt">In&nbsp;[49]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span><span class="n">y_test</span> <span class="o">=</span> <span class="n">tts</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">train_size</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">17</span><span class="p">)</span> 
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span><span class="n">y_test</span> <span class="o">=</span> <span class="n">tts</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">train_size</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">17</span><span class="p">)</span>
 <span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">y_train</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">X_test</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">y_test</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 
@@ -41065,26 +41080,26 @@ Random Forest F1 Score: 0.883497261804
 
     <span class="c1"># This function prints the confusion matrix</span>
     <span class="c1"># Normalization can be applied by setting it to true</span>
-    
+
     <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">cm</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span> <span class="s1">&#39;nearest&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
     <span class="n">tick_marks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">classes</span><span class="p">))</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">tick_marks</span><span class="p">,</span> <span class="n">classes</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">tick_marks</span><span class="p">,</span> <span class="n">classes</span><span class="p">)</span>
-    
+
     <span class="k">if</span> <span class="n">normalize</span><span class="o">==</span><span class="bp">True</span><span class="p">:</span>
         <span class="n">cm</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span><span class="o">/</span><span class="n">cm</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span>
         <span class="k">print</span> <span class="s1">&#39;Normalized Confusion Matrix&#39;</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">print</span> <span class="s1">&#39;Confusion Matrix without Normalization&#39;</span>
-        
+
     <span class="k">print</span> <span class="n">cm</span>
-    
+
     <span class="n">thresh</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">/</span><span class="mi">2</span>
     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">itertools</span><span class="o">.</span><span class="n">product</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">cm</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="nb">range</span><span class="p">(</span><span class="n">cm</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])):</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">cm</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">],</span> <span class="n">horizontalalignment</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span> <span class="k">if</span> <span class="n">cm</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">thresh</span> <span class="k">else</span> <span class="s1">&#39;black&#39;</span><span class="p">)</span>
-        
+
     <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;True Label&#39;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Predicted Label&#39;</span><span class="p">)</span>
@@ -42925,7 +42940,7 @@ gIUo4AAAAICFKOAAAACAhf4LDGV37fLW+hAAAAAASUVORK5CYII=
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span> 
+<div class=" highlight hl-ipython2"><pre><span></span>
 </pre></div>
 
 </div>
@@ -42937,7 +42952,7 @@ gIUo4AAAAICFKOAAAACAhf4LDGV37fLW+hAAAAAASUVORK5CYII=
   </div>
 </body>
 
- 
+
 
 
 </html>
