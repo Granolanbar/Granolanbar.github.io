@@ -13,8 +13,9 @@ picture: assets/images/profile.jpg
 # If you want to include your resume, set to true
 # and specify source (external or local).
 resume: true
-resume-external: local
-resume-url: https://google.com/?q=my+resume
+resume-external: false
+resume-local: true
+#resume-url: https://google.com/?q=my+resume
 
 url: https://granolanbar.github.io
 # your url: http://USERNAME.github.io
@@ -53,7 +54,7 @@ github: granolanbar
 email: nrwerner17@gmail.com
 
 authors:
-    johndoe:
+    nolanwerner:
         name: Nolan Werner
         bio: A guy who likes soccer, comedy, and data
         external-image: false
