@@ -15,7 +15,7 @@ picture: assets/images/profile.jpg
 resume: true
 resume-external: false
 #resume-local: true
-resume-url: https://google.com/?q=my+resume
+resume-url: assets/images/resume.jpg
 
 url: https://granolanbar.github.io
 # your url: http://USERNAME.github.io
@@ -70,7 +70,7 @@ authors:
 # do you want a larger site? change the option below
 # options: [normal, large] | default: normal
 # normal = 560px / large = 810px
-width: large #1000px
+width: 1000px
 
 # if you don't need pagination, comment the *paginate* configs below
 # paginate: 5
