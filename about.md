@@ -4,7 +4,7 @@ layout: page
 ---
 ![Profile Image]({{ site.url }}/{{ site.picture }})
 
-<p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Text about me.</p>
+<p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; I wonder how long it will take for me to get for the page to naturally indent. Will it ever? Who knows? I should probably figure out a way to test the changes I make to my blog so without having to commit to master every single damn time. Oh well... I will figure that out later. I am getting close to getting everything formatted to how I like it. We will see what I will do when I want to post SQL project and Tableu projects...</p>
 
 <p> Text about me.</p>
 
