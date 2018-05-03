@@ -40,7 +40,7 @@ permalink: /:title/
 # google: mygoogle
 # instagram: myinstagram
 # pinterest: mypinterest
-linkedin: nolan-werner-26566a15b/
+linkedin: nolan-werner
 # youtube: myyoutube
 # spotify: myspotify
 github: granolanbar
@@ -70,7 +70,7 @@ authors:
 # do you want a larger site? change the option below
 # options: [normal, large] | default: normal
 # normal = 560px / large = 810px
-width: 850px #1000px
+width: 810px #1000px
 
 # if you don't need pagination, comment the *paginate* configs below
 # paginate: 5
