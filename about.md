@@ -4,25 +4,12 @@ layout: page
 ---
 ![Profile Image]({{ site.url }}/{{ site.picture }})
 
-<p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; I wonder how long it will take for me to get for the page to naturally indent. Will it ever? Who knows? I should probably figure out a way to test the changes I make to my blog so without having to commit to master every single damn time. Oh well... I will figure that out later. I am getting close to getting everything formatted to how I like it. We will see what I will do when I want to post SQL project and Tableu projects...</p>
+<p> I was born and raised in Orange County, just an hour south from where I currently live in LA. I'm told my personality meshes well with the southern California go with the flow vibes. I enjoy trying new things and taking on new challenges ultimately seeing if I think or swim. </p>
 
-<p> Text about me.</p>
+<p> I earned a Bachelor's degree from UCLA in Civil Engineering. I studied Civil Engineering because math and science were my favorite subjects in school and because buildings always fascinated me. </p>
 
-<h2>Skills</h2>
+<p> My interest in data started with reading the book __Freakonomics__. In the book, I found it extremely interesting how if you ask the right, probing questions of your dataset you can find seemingly unintuitive results. I enjoy the challenge and sense of discovery that comes with data science as your work towards exploring new information and potentially solving some of the world's biggest problems. </p>
 
-<ul class="skill-list">
-	<li>								HTML - Jade - Haml - Erb</li>
-	<li>								Responsive (Mobile First)</li>
-	<li>CSS (Stylus, Sass, Less)</li>
-	<li>Css Frameworks (Bootstrap, Foundation)</li>
-	<li>Javascript (Design Patterns, Testes)</li>
-	<li>NodeJS</li>
-	<li>AngularJS - ReactJS</li>
-	<li>Grunt - Gulp - Yeoman</li>
-	<li>Git</li>
-	<li>PHP</li>
-	<li>Python</li>
-	<li>MySQL - MongoDB</li>
-	<li>Scrum and Kanban</li>
-	<li>TDD e Continuous Integration</li>
-</ul>
+<p> In my free time, I enjoy attending comedy shows and spending time with friends. I have take a few improvisation classes for fun. I love playing sports and played Lacrosse in High School and at UCLA. Today, I can be found playing soccer on a few different teams. I also have aspirations of owning a mountain bike. </p>
+
+<p> I like to travel. I studied abroad in Barcelona for a summer and traveled around Europe afterwards. I also backpacked through most of the continent of South America with some friends from school post-graduation. For my next trip, I am looking towards Asia. </p>
