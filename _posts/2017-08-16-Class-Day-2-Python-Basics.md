@@ -5,9 +5,6 @@ date: 2017-08-16
 image: /assets/images/markdown.jpg
 headerImage: false
 tag:
-- markdown
-- elements
-star: true
 category: blog
 author: Nolan Werner
 description: Day 2 Notes
